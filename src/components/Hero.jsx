@@ -1,8 +1,8 @@
 import { ArrowDown, Check, MessageCircle, ShieldCheck } from "lucide-react";
-import wave from "../assets/wave.svg";
 import { services } from "../data/services.js";
 import ButtonLink from "./ButtonLink.jsx";
 import ServiceCard from "./ServiceCard.jsx";
+import Wave from "./Wave.jsx";
 
 const highlights = [
   "Atención por WhatsApp",
@@ -74,16 +74,7 @@ function Hero({ whatsapp }) {
           </ul>
         </div>
       </div>
-
-      <div
-        aria-hidden="true"
-        className="wave-scroll pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-36 bg-repeat-x opacity-20"
-        style={{
-          backgroundImage: `url("${wave}")`,
-          backgroundSize: "300px auto",
-          "--wave-tile-width": "300px",
-        }}
-      />
+      <Wave />
     </section>
   );
 }

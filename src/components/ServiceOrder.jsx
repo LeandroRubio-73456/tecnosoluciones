@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Check, MessageCircle } from "lucide-react";
 import { waLink } from "../config/contact.js";
 import { devices, serviceOrder } from "../data/services.js";
+import BrandMark from "./BrandMark.jsx";
 import { buttonClasses } from "./buttonStyles.js";
 
 // Muesca circular del talonario: en móvil la perforación es horizontal (abajo
@@ -11,43 +12,6 @@ const notch =
 
 // Separación punteada entre bloques del formulario
 const row = "border-b-[1.5px] border-dashed border-line px-6 sm:px-10";
-
-function BrandMark() {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      aria-hidden="true"
-      className="size-11 shrink-0 sm:size-13"
-    >
-      <rect
-        x="20"
-        y="4"
-        width="34"
-        height="34"
-        fill="#3DDC97"
-        fillOpacity="0.92"
-      />
-      <rect
-        x="28"
-        y="26"
-        width="34"
-        height="34"
-        fill="#F2A0AA"
-        fillOpacity="0.92"
-      />
-      <rect
-        x="2"
-        y="14"
-        width="38"
-        height="38"
-        fill="#DCE6FF"
-        fillOpacity="0.94"
-      />
-      <path d="M2 44C20 30 38 36 62 10" stroke="#FFFFFF" strokeWidth="1.6" />
-    </svg>
-  );
-}
 
 // Mensaje que llega al WhatsApp del negocio (*texto* = negrita en WhatsApp)
 function buildMessage({ services, device, details }) {
@@ -93,7 +57,7 @@ function ServiceOrder() {
     >
       {/* Talón */}
       <div className="relative flex shrink-0 items-center justify-between gap-4 border-b-3 border-dashed border-paper bg-primary px-6 py-5 text-white sm:w-36 sm:flex-col sm:justify-start sm:gap-8 sm:border-r-3 sm:border-b-0 sm:px-0 sm:py-9">
-        <BrandMark />
+        <BrandMark className="size-11 sm:size-13" />
         <p className="font-display text-xl font-extrabold tracking-wide whitespace-nowrap font-stretch-semi-expanded sm:rotate-180 sm:text-2xl sm:[writing-mode:vertical-rl]">
           Orden de servicio
         </p>

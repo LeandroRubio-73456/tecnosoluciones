@@ -50,7 +50,7 @@ export const workSteps = [
   {
     title: "Nos escribes",
     description:
-      "Llena la orden o cuéntanos por WhatsApp qué le pasa a tu equipo.",
+      "Cuéntanos por WhatsApp qué le pasa a tu equipo y coordinamos el día para recibirlo.",
   },
   {
     title: "Diagnóstico",

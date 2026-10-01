@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, MessageCircle, X } from "lucide-react";
-import logo from "../assets/logo.svg";
+import Brand from "./Brand.jsx";
 import ButtonLink from "./ButtonLink.jsx";
 
 function Navbar({ links, whatsapp }) {
@@ -50,17 +50,7 @@ function Navbar({ links, whatsapp }) {
             aria-label="Tecnosoluciones, ir al inicio"
             className="flex items-center gap-3 rounded-md"
           >
-            <img
-              src={logo}
-              alt=""
-              width="46"
-              height="36"
-              className="h-9 w-auto"
-            />
-            <span className="font-display text-lg uppercase tracking-tight sm:text-xl">
-              <span className="font-black">Tecno</span>
-              <span className="font-light">soluciones</span>
-            </span>
+            <Brand />
           </a>
 
           <div className="hidden items-center gap-8 md:flex">

@@ -1,3 +1,6 @@
+import Combos from "./components/Combos.jsx";
+import Contact from "./components/Contact.jsx";
+import Footer from "./components/Footer.jsx";
 import Hero from "./components/Hero.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Services from "./components/Services.jsx";
@@ -20,7 +23,10 @@ function App() {
       <main>
         <Hero whatsapp={WHATSAPP_URL} />
         <Services />
+        <Combos />
+        <Contact />
       </main>
+      <Footer links={NAV_LINKS} />
     </>
   );
 }
