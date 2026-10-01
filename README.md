@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <strong>Demo:</strong> próximamente
+  <strong>Demo:</strong> <a href="https://tecnosoluciones-5t8.pages.dev/">tecnosoluciones-5t8.pages.dev</a>
 </p>
 
 ---

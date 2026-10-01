@@ -86,32 +86,63 @@ function Navbar({ links, whatsapp }) {
           </button>
         </div>
 
+        {/* Menú móvil: se superpone al contenido (no lo empuja), así el
+            desplazamiento suave a cada sección llega al punto exacto */}
         <div
           id="menu-movil"
-          hidden={!open}
-          className="border-t border-white/15 md:hidden"
+          inert={!open}
+          className={`absolute inset-x-0 top-full grid bg-primary transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none md:hidden ${
+            open
+              ? "grid-rows-[1fr] shadow-lg shadow-secondary/30"
+              : "grid-rows-[0fr]"
+          }`}
         >
-          <ul className="site-container flex flex-col py-3">
-            {links.map(({ label, href }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  onClick={close}
-                  className="block rounded-md py-3 text-lg font-medium text-white/85 hover:text-white"
+          <div className="overflow-hidden">
+            <ul className="site-container flex flex-col border-t border-white/15 py-3">
+              {[...links, null].map((link, i) => (
+                // Los elementos aparecen en cascada al abrir
+                <li
+                  key={link?.href ?? "whatsapp"}
+                  style={{ transitionDelay: open ? `${80 + i * 50}ms` : "0ms" }}
+                  className={`transition duration-300 ease-out motion-reduce:transition-none ${
+                    open
+                      ? "translate-y-0 opacity-100"
+                      : "-translate-y-2 opacity-0"
+                  } ${link ? "" : "pt-3 pb-2"}`}
                 >
-                  {label}
-                </a>
-              </li>
-            ))}
-            <li className="pt-3 pb-2">
-              <ButtonLink href={whatsapp} target="_blank" className="w-full">
-                <MessageCircle className="size-5" aria-hidden="true" />
-                Escribir por WhatsApp
-              </ButtonLink>
-            </li>
-          </ul>
+                  {link ? (
+                    <a
+                      href={link.href}
+                      onClick={close}
+                      className="block rounded-md py-3 text-lg font-medium text-white/85 hover:text-white"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <ButtonLink
+                      href={whatsapp}
+                      target="_blank"
+                      className="w-full"
+                    >
+                      <MessageCircle className="size-5" aria-hidden="true" />
+                      Escribir por WhatsApp
+                    </ButtonLink>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </nav>
+
+      {/* Fondo oscurecido detrás del menú móvil; tocarlo lo cierra */}
+      <div
+        aria-hidden="true"
+        onClick={close}
+        className={`fixed inset-x-0 top-18 bottom-0 -z-10 bg-secondary/50 transition-opacity duration-300 motion-reduce:transition-none md:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
     </header>
   );
 }
