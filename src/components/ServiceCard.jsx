@@ -1,34 +1,33 @@
 const variants = {
-	blue: {
-		icon: 'bg-(--primary-clear) text-(--secondary)',
-	},
-	green: {
-		icon: 'bg-(--accent-clear) text-(--secondary)',
-	},
-	red: {
-		icon: 'bg-(--service-red-clear) text-(--service-red)',
-	},
+  blue: "bg-primary-clear",
+  green: "bg-accent-clear",
+  red: "bg-service-red-clear",
+};
+
+function ServiceCard({ icon: Icon, title, description, variant = "blue" }) {
+  const iconBg = variants[variant] ?? variants.blue;
+
+  return (
+    <article className="flex items-stretch overflow-hidden rounded-2xl bg-white text-secondary shadow-xl shadow-secondary/25">
+      <div className={`flex shrink-0 items-center px-5 sm:px-7 ${iconBg}`}>
+        <Icon
+          className="size-8 sm:size-10"
+          strokeWidth={1.75}
+          aria-hidden="true"
+        />
+      </div>
+      <div className="p-5 sm:p-6">
+        <h3 className="font-display text-lg font-bold tracking-tight sm:text-xl">
+          {title}
+        </h3>
+        <p className="mt-1 text-secondary/75">{description}</p>
+        <span
+          aria-hidden="true"
+          className="mt-3 block h-1 w-12 rounded-full bg-accent"
+        />
+      </div>
+    </article>
+  );
 }
 
-function ServiceCard({ icon: Icon, title, description, variant = 'blue' }) {
-	const colors = variants[variant] ?? variants.blue
-
-	return (
-		<article className="service-card flex items-stretch rounded-lg bg-white transition-transform duration-300 ease-in-out hover:scale-[1.08]">
-			<div className={`flex shrink-0 items-center rounded-s-lg px-8 ${colors.icon}`}>
-				<Icon size={46} aria-hidden="true" />
-			</div>
-			<div className="px-6 py-6">
-				<h3 className="text-2xl font-semibold text-(--secondary)">
-					{title}
-				</h3>
-				<p className="text-(--secondary)/75">
-					{description}
-				</p>
-				<hr className="max-w-2/5 border-(--accent) border-2 mt-2" />
-			</div>
-		</article>
-	)
-}
-
-export default ServiceCard
+export default ServiceCard;

@@ -1,40 +1,57 @@
 @import "tailwindcss";
 
-.sora {
-  font-family: "Sora", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: #2440e8;
+  --color-primary-clear: #8c99e2;
+  --color-secondary: #0a1f7a;
+  --color-accent: #3ddc97;
+  --color-accent-clear: #83ddb8;
+  --color-service-red: #c6283d;
+  --color-service-red-clear: #f2a0aa;
 }
 
-:root {
-  --primary: #2440E8;
-  --primary-clear:#8c99e2;
-  --secondary: #0A1F7A;
-  --accent: #3DDC97;
-  --accent-clear: #83ddb8;
-  --service-red: #C6283D;
-  --service-red-clear: #F2A0AA;
+@layer base {
+  html {
+    /* Deja espacio para el navbar fijo al saltar a una sección */
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-white text-secondary antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  /* En secciones de fondo azul el contorno de foco va en blanco */
+  .on-dark :focus-visible {
+    outline-color: var(--color-white);
+  }
+}
+
+@utility site-container {
+  width: min(100% - 2.5rem, 75rem);
+  margin-inline: auto;
+
+  @media (width >= 48rem) {
+    width: min(100% - 4rem, 75rem);
+  }
 }
 
 .wave-scroll {
   background-position: 0 50%;
   animation: wave-scroll 8s linear infinite;
-}
-
-.service-card {
-  animation: service-card-drift 2.8s ease-in-out infinite alternate;
-}
-
-.service-card:nth-child(2) {
-  animation-delay: 180ms;
-}
-
-.service-card:nth-child(3) {
-  animation-delay: 360ms;
-}
-
-.service-card:hover {
-  animation-play-state: paused;
 }
 
 @keyframes wave-scroll {
@@ -43,19 +60,8 @@
   }
 }
 
-@keyframes service-card-drift {
-  from {
-    translate: 0 0;
-  }
-  to {
-    translate: 5px 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .wave-scroll,
-  .service-card {
+  .wave-scroll {
     animation: none;
   }
 }
-
