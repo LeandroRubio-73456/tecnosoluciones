@@ -1,13 +1,4 @@
-const variants = {
-  primary: "bg-accent text-secondary hover:bg-accent-clear",
-  secondary:
-    "border border-white/40 text-white hover:border-white hover:bg-white/10",
-};
-
-const sizes = {
-  md: "px-6 py-3 text-base",
-  sm: "px-4 py-2 text-sm",
-};
+import { buttonClasses } from "./buttonStyles.js";
 
 function ButtonLink({
   href,
@@ -24,7 +15,7 @@ function ButtonLink({
       href={href}
       target={target}
       rel={external ? "noopener noreferrer" : undefined}
-      className={`inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors ${sizes[size]} ${variants[variant]} ${className}`}
+      className={`${buttonClasses(variant, size)} ${className}`}
     >
       {children}
       {external && (

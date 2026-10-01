@@ -1,5 +1,6 @@
 import Hero from "./components/Hero.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Services from "./components/Services.jsx";
 import { waLink } from "./config/contact.js";
 
 const NAV_LINKS = [
@@ -18,6 +19,7 @@ function App() {
       <Navbar links={NAV_LINKS} whatsapp={WHATSAPP_URL} />
       <main>
         <Hero whatsapp={WHATSAPP_URL} />
+        <Services />
       </main>
     </>
   );
